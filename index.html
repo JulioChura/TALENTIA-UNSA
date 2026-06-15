@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TALENTIA UNSA - Iniciar Sesión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .bg-primary { background-color: #001631; }
+        .bg-primary-container { background-color: #0f2b4d; }
+        .bg-surface { background-color: #faf9fc; }
+        .bg-success { background-color: #2D6A4F; }
+        .text-primary { color: #001631; }
+        .text-success { color: #2D6A4F; }
+        .border-outline-variant { border-color: #c4c6cf; }
+        .card-shadow { box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.1), 0 4px 8px -4px rgba(0, 0, 0, 0.05); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.5s ease-out; }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            100% { transform: scale(1.05); opacity: 0; }
+        }
+        
+        input:focus {
+            outline: none;
+            ring: 2px solid #001631;
+        }
+    </style>
+</head>
+<body class="bg-surface min-h-screen flex">
+
+<!-- Panel Izquierdo - Branding -->
+<div class="hidden lg:flex lg:w-1/2 bg-primary-container relative overflow-hidden">
+    <!-- Patrón de fondo sutil -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-10 left-10 w-64 h-64 rounded-full bg-white/20"></div>
+        <div class="absolute bottom-20 right-20 w-96 h-96 rounded-full bg-white/10"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-white/5"></div>
+    </div>
+    
+    <div class="relative z-10 flex flex-col justify-between p-12 h-full">
+        <div>
+            <div class="flex items-center gap-2 mb-12">
+                <span class="material-symbols-outlined text-3xl text-white">psychology</span>
+                <span class="text-2xl font-bold text-white">TALENTIA UNSA</span>
+            </div>
+            <div class="space-y-6">
+                <h1 class="text-4xl font-bold text-white leading-tight">
+                    Conectando<br>
+                    el talento UNSA<br>
+                    con el mercado laboral
+                </h1>
+                <p class="text-white/70 text-lg">
+                    Plataforma inteligente que utiliza IA para conectar egresados<br>
+                    con las mejores oportunidades laborales.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Características -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-3 text-white/80">
+                <span class="material-symbols-outlined text-success">auto_awesome</span>
+                <span>Matching por inteligencia artificial</span>
+            </div>
+            <div class="flex items-center gap-3 text-white/80">
+                <span class="material-symbols-outlined text-success">verified</span>
+                <span>Certificación blockchain de credenciales</span>
+            </div>
+            <div class="flex items-center gap-3 text-white/80">
+                <span class="material-symbols-outlined text-success">analytics</span>
+                <span>Reportes y estadísticas en tiempo real</span>
+            </div>
+        </div>
+        
+        <div class="text-white/40 text-sm">
+            © 2024 TALENTIA UNSA - Transformagob 2026
+        </div>
+    </div>
+</div>
+
+<!-- Panel Derecho - Login Form -->
+<div class="w-full lg:w-1/2 flex items-center justify-center p-6 md:p-12">
+    <div class="w-full max-w-md animate-fade-in-up">
+        <!-- Logo para móvil -->
+        <div class="text-center lg:hidden mb-8">
+            <div class="flex items-center justify-center gap-2 mb-2">
+                <span class="material-symbols-outlined text-3xl text-primary">psychology</span>
+                <span class="text-2xl font-bold text-primary">TALENTIA UNSA</span>
+            </div>
+            <div class="flex items-center justify-center gap-1 bg-success/10 border border-success/30 px-3 py-1 rounded-full w-fit mx-auto">
+                <span class="w-2 h-2 bg-success rounded-full animate-pulse"></span>
+                <span class="text-xs font-bold text-success">ML Active</span>
+            </div>
+        </div>
+
+        <!-- Formulario -->
+        <div class="bg-surface-container-lowest rounded-2xl card-shadow p-8 md:p-10">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="material-symbols-outlined text-primary text-3xl">admin_panel_settings</span>
+                </div>
+                <h2 class="text-2xl font-bold text-primary">Iniciar Sesión</h2>
+                <p class="text-secondary mt-2">Accede a la consola de administración</p>
+            </div>
+
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-primary mb-2">Correo electrónico</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-xl">mail</span>
+                        <input type="email" id="email" name="email" class="w-full pl-10 pr-4 py-3 border border-outline-variant rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" placeholder="administrador@unsa.edu.pe" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-primary mb-2">Contraseña</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-xl">lock</span>
+                        <input type="password" id="password" name="password" class="w-full pl-10 pr-12 py-3 border border-outline-variant rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" placeholder="••••••••" required>
+                        <button type="button" id="togglePassword" class="absolute right-3 top-1/2 -translate-y-1/2 text-secondary hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-xl">visibility</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary">
+                        <span class="text-sm text-secondary">Recordar sesión</span>
+                    </label>
+                    <a href="#" class="text-sm text-success hover:underline">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <button type="submit" id="loginBtn" class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-lg">
+                    <span class="material-symbols-outlined">login</span>
+                    Ingresar al Dashboard
+                </button>
+            </form>
+
+            <!-- Credenciales demo -->
+            <div class="mt-8 p-4 bg-surface-container rounded-xl border border-outline-variant/50">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="material-symbols-outlined text-secondary text-sm">info</span>
+                    <span class="text-xs font-medium text-secondary">DEMO - Credenciales de prueba</span>
+                </div>
+                <div class="flex flex-wrap gap-3 text-sm">
+                    <div class="flex items-center gap-1"><span class="text-primary font-medium">Usuario:</span> <span class="text-secondary">admin@talenta.edu.pe</span></div>
+                    <div class="flex items-center gap-1"><span class="text-primary font-medium">Contraseña:</span> <span class="text-secondary">admin123</span></div>
+                </div>
+                <button onclick="fillDemoCredentials()" class="mt-2 text-xs text-success hover:underline flex items-center gap-1">
+                    <span class="material-symbols-outlined text-sm">auto_fill</span>
+                    Usar credenciales demo
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer móvil -->
+        <div class="text-center mt-8 text-secondary text-xs lg:hidden">
+            © 2024 TALENTIA UNSA - Administración
+        </div>
+    </div>
+</div>
+
+<script>
+    // Toggle password visibility
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+    
+    togglePassword.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.querySelector('span').innerText = type === 'password' ? 'visibility' : 'visibility_off';
+    });
+
+    // Fill demo credentials
+    function fillDemoCredentials() {
+        document.getElementById('email').value = 'admin@talenta.edu.pe';
+        document.getElementById('password').value = 'admin123';
+    }
+
+    // Handle login
+    const loginForm = document.getElementById('loginForm');
+    const loginBtn = document.getElementById('loginBtn');
+
+    loginForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        
+        // Validación simple
+        if (!email || !password) {
+            showError('Por favor, complete todos los campos');
+            return;
+        }
+        
+        // Validación de formato de email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showError('Ingrese un correo electrónico válido');
+            return;
+        }
+        
+        // Credenciales demo aceptadas
+        const isValid = (email === 'admin@talenta.edu.pe' && password === 'admin123') ||
+                        (email === 'julio.chura@unsa.edu.pe' && password === '123456');
+        
+        if (isValid) {
+            // Mostrar loading
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Validando acceso...';
+            
+            // Simular autenticación
+            setTimeout(() => {
+                // Guardar sesión
+                sessionStorage.setItem('isLoggedIn', 'true');
+                sessionStorage.setItem('userEmail', email);
+                sessionStorage.setItem('userName', email.includes('julio') ? 'Julio Chura' : 'Administrador');
+                
+                // Redirigir al dashboard
+                window.location.href = 'dashboard.html';
+            }, 1200);
+        } else {
+            showError('Credenciales incorrectas. Verifique su usuario y contraseña.');
+        }
+    });
+    
+    function showError(message) {
+        // Crear toast de error
+        const existingToast = document.querySelector('.error-toast');
+        if (existingToast) existingToast.remove();
+        
+        const toast = document.createElement('div');
+        toast.className = 'error-toast fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-error-container border-l-4 border-error rounded-lg p-4 flex items-center gap-3 shadow-lg animate-fade-in-up';
+        toast.innerHTML = `
+            <span class="material-symbols-outlined text-error">error</span>
+            <span class="text-on-surface">${message}</span>
+            <button onclick="this.parentElement.remove()" class="ml-4">
+                <span class="material-symbols-outlined text-secondary text-sm">close</span>
+            </button>
+        `;
+        document.body.appendChild(toast);
+        
+        // Auto remover después de 4 segundos
+        setTimeout(() => {
+            if (toast) toast.remove();
+        }, 4000);
+    }
+    
+    // Verificar si ya está logueado
+    if (sessionStorage.getItem('isLoggedIn') === 'true') {
+        // Redirigir automáticamente al dashboard
+        window.location.href = 'dashboard.html';
+    }
+    
+    window.fillDemoCredentials = fillDemoCredentials;
+    window.showError = showError;
+</script>
+</body>
+</html>
