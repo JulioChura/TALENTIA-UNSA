@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TALENTIA UNSA - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .bg-primary { background-color: #001631; }
+        .bg-primary-container { background-color: #0f2b4d; }
+        .bg-secondary-container { background-color: #dce2f3; }
+        .bg-surface { background-color: #faf9fc; }
+        .bg-surface-container-lowest { background-color: #ffffff; }
+        .bg-surface-container { background-color: #efedf1; }
+        .bg-surface-variant { background-color: #e3e2e5; }
+        .bg-success { background-color: #2D6A4F; }
+        .bg-error { background-color: #ba1a1a; }
+        .bg-tertiary { background-color: #432300; }
+        .bg-info { background-color: #475f84; }
+        .text-primary { color: #001631; }
+        .text-on-primary { color: #ffffff; }
+        .text-secondary { color: #585f6c; }
+        .text-success { color: #2D6A4F; }
+        .text-error { color: #ba1a1a; }
+        .border-outline-variant { border-color: #c4c6cf; }
+        .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
+        .modal-backdrop { background-color: rgba(15, 43, 77, 0.4); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .processing-step { transition: all 0.3s ease; }
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; box-shadow: 0 0 8px rgba(45, 106, 79, 0.5); }
+        }
+        .animate-pulse-glow { animation: pulse-glow 1.5s infinite; }
+        .career-card { transition: all 0.2s ease; cursor: pointer; }
+        .career-card:hover { transform: translateY(-2px); box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-surface">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 h-20 bg-primary-container shadow-md z-50 flex justify-between items-center px-8">
+    <div class="flex items-center gap-3">
+        <span class="text-2xl font-bold text-on-primary">TALENTIA UNSA</span>
+        <div class="flex items-center gap-1 bg-success/20 border border-success px-3 py-1 rounded-full">
+            <span class="w-2 h-2 bg-success rounded-full animate-pulse"></span>
+            <span class="text-xs font-bold text-success">ML Active</span>
+        </div>
+    </div>
+    <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-primary-container">search</span>
+        <input type="text" placeholder="Buscar ofertas, egresados..." class="w-full bg-white/20 rounded-full py-2 pl-10 pr-4 text-on-primary placeholder:text-on-primary-container focus:outline-none focus:ring-2 focus:ring-white/50">
+    </div>
+    <div class="flex items-center gap-4">
+        <button class="p-2 rounded-full hover:bg-primary transition-colors"><span class="material-symbols-outlined text-on-primary-container">notifications</span></button>
+        <button class="p-2 rounded-full hover:bg-primary transition-colors"><span class="material-symbols-outlined text-on-primary-container">settings</span></button>
+        <div class="w-10 h-10 rounded-full bg-success flex items-center justify-center text-white font-bold border-2 border-white">JC</div>
+    </div>
+</header>
+
+<!-- Sidebar + Main -->
+<div class="flex pt-20 min-h-screen">
+    <!-- Sidebar -->
+    <nav class="fixed left-0 top-20 bottom-0 w-[280px] bg-surface-container-lowest border-r border-outline-variant p-4 flex flex-col z-40 hidden md:flex">
+        <div class="flex items-center gap-3 mb-6 p-2">
+            <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-white font-bold text-lg">JC</div>
+            <div><h3 class="font-bold text-primary">Julio Chura</h3><span class="text-xs text-secondary">Administrador</span></div>
+        </div>
+        <div class="flex-1 space-y-1">
+            <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-secondary-container text-primary font-medium transition-all"><span class="material-symbols-outlined">dashboard</span> Dashboard</a>
+            <a href="ofertas.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">work</span> Ofertas</a>
+            <a href="egresados.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">school</span> Egresados</a>
+            <a href="reportes.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">analytics</span> Reportes</a>
+            <a href="configuracion.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">settings</span> Configuración</a>
+        </div>
+        <div class="pt-4 border-t border-outline-variant mt-auto space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">help</span> Ayuda</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">logout</span> Salir</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 md:ml-[280px] p-8">
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-primary">Dashboard</h1>
+            <p class="text-secondary mt-1">Bienvenido a la consola de administración de TALENTIA UNSA</p>
+        </div>
+
+        <!-- Metrics Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-surface-container-lowest p-6 rounded-xl card-shadow border border-outline-variant/30">
+                <div class="flex justify-between items-start mb-4"><span class="text-xs font-semibold text-secondary uppercase">Ofertas este mes</span><span class="material-symbols-outlined text-secondary">work_history</span></div>
+                <div class="text-4xl font-bold text-primary">24</div>
+                <div class="flex items-center gap-1 mt-2 text-sm text-success"><span class="material-symbols-outlined text-sm">arrow_upward</span> +8 vs anterior</div>
+            </div>
+            <div class="bg-surface-container-lowest p-6 rounded-xl card-shadow border border-outline-variant/30">
+                <div class="flex justify-between items-start mb-4"><span class="text-xs font-semibold text-secondary uppercase">Ofertas enviadas</span><span class="material-symbols-outlined text-secondary">send</span></div>
+                <div class="text-4xl font-bold text-primary">18</div>
+                <div class="mt-3"><div class="w-full bg-surface-variant rounded-full h-1.5"><div class="bg-primary h-full rounded-full" style="width:75%"></div></div><span class="text-xs text-secondary mt-1 inline-block">75% del total</span></div>
+            </div>
+            <div class="bg-surface-container-lowest p-6 rounded-xl card-shadow border border-outline-variant/30">
+                <div class="flex justify-between items-start mb-4"><span class="text-xs font-semibold text-secondary uppercase">Egresados registrados</span><span class="material-symbols-outlined text-secondary">groups</span></div>
+                <div class="text-4xl font-bold text-primary">3,247</div>
+                <div class="flex items-center gap-1 mt-2 text-sm text-success"><span class="material-symbols-outlined text-sm">trending_up</span> +142 esta semana</div>
+            </div>
+            <div class="bg-surface-container-lowest p-6 rounded-xl card-shadow border border-outline-variant/30">
+                <div class="flex justify-between items-start mb-4"><span class="text-xs font-semibold text-secondary uppercase">Precisión del modelo</span><span class="material-symbols-outlined text-secondary">psychology</span></div>
+                <div class="text-4xl font-bold text-primary">94.2%</div>
+                <div class="mt-3"><div class="w-full bg-surface-variant rounded-full h-1.5"><div class="bg-success h-full rounded-full" style="width:94%"></div></div></div>
+            </div>
+        </div>
+
+        <!-- Intelligent Ingest -->
+        <div class="bg-surface-container-lowest rounded-xl card-shadow border border-outline-variant/30 p-6 mb-8">
+            <div class="flex items-center gap-2 border-b border-outline-variant/50 pb-4 mb-4">
+                <span class="material-symbols-outlined text-primary">auto_awesome</span>
+                <h2 class="text-xl font-bold text-primary">Procesar nueva oferta laboral con IA</h2>
+            </div>
+            
+            <!-- Tabs para método de ingesta -->
+            <div class="flex gap-2 mb-4 border-b">
+                <button onclick="switchTab('text')" id="tabTextBtn" class="px-4 py-2 text-sm font-medium border-b-2 border-success text-success">Pegar texto</button>
+                <button onclick="switchTab('file')" id="tabFileBtn" class="px-4 py-2 text-sm font-medium text-secondary hover:text-primary">Subir archivo</button>
+            </div>
+
+            <!-- Panel Texto -->
+            <div id="panelText" class="transition-all">
+                <textarea id="offerText" class="w-full h-32 p-4 bg-surface-container border border-outline-variant rounded-xl resize-none focus:ring-2 focus:ring-primary" placeholder="Pega aquí el texto de la oferta laboral. Ejemplo: 'Buscamos un Ingeniero de Sistemas con 3 años de experiencia en Python y AWS...'"></textarea>
+            </div>
+
+            <!-- Panel Archivo -->
+            <div id="panelFile" class="hidden transition-all">
+                <div class="border-2 border-dashed border-outline-variant rounded-xl p-8 text-center bg-surface-container/30">
+                    <span class="material-symbols-outlined text-4xl text-secondary">cloud_upload</span>
+                    <p class="mt-2 text-secondary">Arrastra o selecciona archivos (CSV, TXT, EML)</p>
+                    <input type="file" id="fileInput" accept=".csv,.txt,.eml" class="hidden" multiple>
+                    <button onclick="document.getElementById('fileInput').click()" class="mt-3 bg-primary text-white px-4 py-2 rounded-lg text-sm">Seleccionar archivos</button>
+                </div>
+                <div id="fileList" class="mt-3 space-y-2"></div>
+            </div>
+
+            <!-- Botón de análisis -->
+            <div class="flex justify-end mt-4">
+                <button id="analyzeBtn" class="bg-success hover:bg-success/90 text-white px-6 py-3 rounded-full flex items-center gap-2 font-bold shadow-md transition-all" onclick="startProcessing()">
+                    <span class="material-symbols-outlined">psychology</span> Analizar con IA
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal de Procesamiento con Timeline -->
+        <div id="processingModal" class="fixed inset-0 modal-backdrop z-50 flex items-center justify-center hidden">
+            <div class="bg-surface-container-lowest rounded-xl max-w-2xl w-full mx-4 overflow-hidden">
+                <div class="p-6 border-b border-outline-variant">
+                    <h3 class="text-xl font-bold text-primary flex items-center gap-2">
+                        <span class="material-symbols-outlined text-success animate-pulse">psychology</span>
+                        Procesando oferta con IA
+                    </h3>
+                </div>
+                <div class="p-6">
+                    <div class="relative pl-8 space-y-6">
+                        <div class="absolute left-[11px] top-2 bottom-2 w-[2px] bg-outline-variant" id="timelineLine"></div>
+                        
+                        <div class="relative processing-step" id="step1">
+                            <div class="absolute -left-8 w-5 h-5 rounded-full bg-surface-variant border-2 border-outline flex items-center justify-center text-xs" id="step1Icon">1</div>
+                            <p class="font-medium text-primary">Validación del texto</p>
+                            <p class="text-sm text-secondary" id="step1Status">Esperando...</p>
+                        </div>
+                        
+                        <div class="relative processing-step" id="step2">
+                            <div class="absolute -left-8 w-5 h-5 rounded-full bg-surface-variant border-2 border-outline flex items-center justify-center text-xs" id="step2Icon">2</div>
+                            <p class="font-medium text-primary">Extracción de palabras clave (KeyBERT)</p>
+                            <p class="text-sm text-secondary" id="step2Status">Esperando...</p>
+                        </div>
+                        
+                        <div class="relative processing-step" id="step3">
+                            <div class="absolute -left-8 w-5 h-5 rounded-full bg-surface-variant border-2 border-outline flex items-center justify-center text-xs" id="step3Icon">3</div>
+                            <p class="font-medium text-primary">Clasificación por carrera (ML)</p>
+                            <p class="text-sm text-secondary" id="step3Status">Esperando...</p>
+                        </div>
+                        
+                        <div class="relative processing-step" id="step4">
+                            <div class="absolute -left-8 w-5 h-5 rounded-full bg-surface-variant border-2 border-outline flex items-center justify-center text-xs" id="step4Icon">4</div>
+                            <p class="font-medium text-primary">Matching con egresados</p>
+                            <p class="text-sm text-secondary" id="step4Status">Esperando...</p>
+                        </div>
+                    </div>
+                    
+                    <div id="processingResult" class="mt-6 hidden">
+                        <div class="bg-success/10 border border-success rounded-lg p-4">
+                            <div class="flex items-center justify-between">
+                                <div><span class="font-bold text-success">Análisis completado</span></div>
+                                <span class="text-2xl font-bold text-primary" id="resultMatchCount">247</span>
+                            </div>
+                            <div class="mt-2 text-sm text-secondary" id="resultDetails"></div>
+                            <button onclick="showOfferDetailModal()" class="mt-3 bg-primary text-white px-4 py-2 rounded-lg text-sm w-full">Ver detalles completos</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 border-t border-outline-variant flex justify-end">
+                    <button onclick="closeProcessingModal()" class="px-4 py-2 border rounded-lg text-secondary">Cerrar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Detalles de Oferta -->
+        <div id="offerDetailModal" class="fixed inset-0 modal-backdrop z-50 flex items-center justify-center hidden p-4">
+            <div class="bg-surface-container-lowest w-full max-w-5xl max-h-[90vh] rounded-xl shadow-2xl flex flex-col overflow-hidden">
+                <div class="flex justify-between items-center px-6 py-4 border-b border-outline-variant">
+                    <h2 class="text-xl font-bold text-primary flex items-center gap-2"><span class="material-symbols-outlined">work</span> Detalles de la oferta</h2>
+                    <button onclick="closeOfferDetailModal()" class="text-secondary hover:text-error"><span class="material-symbols-outlined">close</span></button>
+                </div>
+                <div class="flex-1 overflow-y-auto p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-8 flex flex-col gap-6">
+                        <div class="flex flex-wrap gap-4">
+                            <span class="bg-surface-variant px-3 py-1 rounded-md text-sm flex items-center gap-1"><span class="material-symbols-outlined text-sm">tag</span> <span id="detailId">OFF-001</span></span>
+                            <span class="text-sm flex items-center gap-1"><span class="material-symbols-outlined text-sm text-secondary">calendar_today</span> 14 de junio de 2026</span>
+                        </div>
+                        <div class="bg-surface p-5 rounded-xl border relative">
+                            <div class="absolute top-0 left-0 w-1 h-full bg-surface-tint"></div>
+                            <h3 class="text-sm font-semibold text-secondary uppercase mb-2 flex items-center gap-1"><span class="material-symbols-outlined text-sm">description</span> Correo Original</h3>
+                            <p class="text-on-surface whitespace-pre-line" id="detailOriginalText"></p>
+                        </div>
+                        <div class="bg-primary-fixed-dim/10 p-5 rounded-xl border border-primary-fixed-dim">
+                            <div class="flex justify-between mb-4"><h3 class="font-bold text-primary flex items-center gap-2"><span class="material-symbols-outlined">auto_awesome</span> Análisis IA</h3><span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-sm font-bold" id="detailConfidence">96% confianza</span></div>
+                            
+                            <!-- Múltiples carreras detectadas -->
+                            <div class="mb-4">
+                                <p class="text-sm font-semibold text-primary mb-2">Carreras sugeridas:</p>
+                                <div id="detailCareers" class="space-y-2"></div>
+                            </div>
+                            
+                            <div><span class="text-sm text-secondary">Etiquetas clave:</span><div class="flex flex-wrap gap-2 mt-2" id="detailTags"></div></div>
+                            <div class="mt-4 pt-4 border-t flex justify-between"><span>Egresados compatibles:</span><span class="text-2xl font-bold text-primary" id="detailMatchCount">247</span></div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-4 flex flex-col gap-6">
+                        <div class="bg-surface p-5 rounded-xl border">
+                            <h3 class="font-bold mb-4">Estado del Proceso</h3>
+                            <div class="relative pl-6 space-y-6">
+                                <div class="absolute left-[11px] top-2 bottom-6 w-[2px] bg-outline-variant"></div>
+                                <div class="relative"><div class="absolute -left-6 w-2.5 h-2.5 rounded-full bg-primary mt-1.5"></div><p class="text-xs text-secondary">10:23 AM</p><p class="font-medium">Recibido</p></div>
+                                <div class="relative"><div class="absolute -left-6 w-2.5 h-2.5 rounded-full bg-primary mt-1.5"></div><p class="text-xs text-secondary">10:25 AM</p><p class="font-medium">Procesado por IA</p></div>
+                                <div class="relative"><div class="absolute -left-6 w-2.5 h-2.5 rounded-full bg-surface-variant border-2 border-outline mt-1.5"></div><p class="text-xs text-secondary">Pendiente</p><p class="italic text-secondary">Envío a egresados</p></div>
+                            </div>
+                        </div>
+                        <div class="bg-surface p-5 rounded-xl border">
+                            <div class="flex justify-between mb-4"><h3 class="font-bold">Top Candidatos</h3><span class="text-sm text-primary cursor-pointer">Ver todos</span></div>
+                            <div class="space-y-3" id="detailCandidates"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 py-4 border-t bg-surface-container-low flex justify-end gap-4">
+                    <button onclick="closeOfferDetailModal()" class="px-6 py-2 rounded-full border">Cerrar</button>
+                    <button onclick="sendOffer()" class="px-8 py-2 rounded-full bg-primary text-white font-bold flex items-center gap-2"><span class="material-symbols-outlined">send</span> Enviar a egresados</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resultados de Análisis - Múltiples Carreras Detectadas -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-primary">Carreras detectadas recientemente</h2>
+                <span class="text-sm text-secondary">Basado en análisis de IA</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Tarjeta Ingeniería de Sistemas - Clickable -->
+                <div class="bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl p-4 border border-primary/20 career-card" onclick="viewOfferDetails('OFF-001', 'Ingeniero de Sistemas Senior', 'Scotiabank', 'Ingeniería de Sistemas', 96, 247, ['Python', 'SQL', 'Cloud', 'Arquitectura'])">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="material-symbols-outlined text-primary text-2xl">computer</span>
+                        <span class="text-xs font-bold text-success bg-success/10 px-2 py-1 rounded-full">96% match</span>
+                    </div>
+                    <h3 class="font-bold text-primary">Ingeniería de Sistemas</h3>
+                    <p class="text-xs text-secondary mt-1">247 egresados compatibles</p>
+                    <div class="mt-3 flex flex-wrap gap-1">
+                        <span class="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">Python</span>
+                        <span class="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">SQL</span>
+                        <span class="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">Cloud</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta Administración - Clickable -->
+                <div class="bg-gradient-to-br from-success/5 to-success/10 rounded-xl p-4 border border-success/20 career-card" onclick="viewOfferDetails('OFF-002', 'Practicante Marketing Digital', 'Belcorp', 'Administración de Marketing', 91, 89, ['SEO', 'Redes Sociales', 'Analítica', 'Marketing Digital'])">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="material-symbols-outlined text-success text-2xl">campaign</span>
+                        <span class="text-xs font-bold text-success bg-success/10 px-2 py-1 rounded-full">91% match</span>
+                    </div>
+                    <h3 class="font-bold text-primary">Administración de Marketing</h3>
+                    <p class="text-xs text-secondary mt-1">89 egresados compatibles</p>
+                    <div class="mt-3 flex flex-wrap gap-1">
+                        <span class="text-xs bg-success/10 text-success px-2 py-0.5 rounded">SEO</span>
+                        <span class="text-xs bg-success/10 text-success px-2 py-0.5 rounded">Social Media</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta Ciencia de Datos - Clickable -->
+                <div class="bg-gradient-to-br from-info/5 to-info/10 rounded-xl p-4 border border-info/20 career-card" onclick="viewOfferDetails('OFF-004', 'Ingeniero de Datos', 'Ripley Perú', 'Ciencia de Datos', 94, 186, ['Python', 'Spark', 'ETL', 'SQL', 'Big Data'])">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="material-symbols-outlined text-info text-2xl">database</span>
+                        <span class="text-xs font-bold text-success bg-success/10 px-2 py-1 rounded-full">94% match</span>
+                    </div>
+                    <h3 class="font-bold text-primary">Ciencia de Datos</h3>
+                    <p class="text-xs text-secondary mt-1">186 egresados compatibles</p>
+                    <div class="mt-3 flex-wrap gap-1 hidden sm:flex">
+                        <span class="text-xs bg-info/10 text-info px-2 py-0.5 rounded">Python</span>
+                        <span class="text-xs bg-info/10 text-info px-2 py-0.5 rounded">Spark</span>
+                        <span class="text-xs bg-info/10 text-info px-2 py-0.5 rounded">ETL</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta Ingeniería Civil - Clickable -->
+                <div class="bg-gradient-to-br from-tertiary/5 to-tertiary/10 rounded-xl p-4 border border-tertiary/20 career-card" onclick="viewOfferDetails('OFF-005', 'Ingeniero Civil Senior', 'COSAPI', 'Ingeniería Civil', 89, 156, ['AutoCAD', 'Gestión de Proyectos', 'Estructuras', 'Presupuestos'])">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="material-symbols-outlined text-tertiary text-2xl">engineering</span>
+                        <span class="text-xs font-bold text-success bg-success/10 px-2 py-1 rounded-full">89% match</span>
+                    </div>
+                    <h3 class="font-bold text-primary">Ingeniería Civil</h3>
+                    <p class="text-xs text-secondary mt-1">156 egresados compatibles</p>
+                    <div class="mt-3 flex-wrap gap-1 hidden sm:flex">
+                        <span class="text-xs bg-tertiary/10 text-tertiary px-2 py-0.5 rounded">AutoCAD</span>
+                        <span class="text-xs bg-tertiary/10 text-tertiary px-2 py-0.5 rounded">Proyectos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Offers Table -->
+        <div class="bg-surface-container-lowest rounded-xl card-shadow border border-outline-variant/30 overflow-hidden">
+            <div class="p-6 border-b flex flex-wrap justify-between items-center gap-4">
+                <h2 class="text-xl font-bold text-primary">Últimas ofertas procesadas</h2>
+                <div class="flex gap-3"><input type="text" placeholder="Buscar..." class="border rounded-lg px-4 py-2 text-sm"><button class="bg-primary text-white px-4 py-2 rounded-lg text-sm">Filtrar</button></div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-surface-container text-secondary text-xs uppercase"><tr><th class="p-4">ID</th><th>Título / Empresa</th><th>Carrera</th><th>Match</th><th>Candidatos</th><th>Estado</th><th></th></tr></thead>
+                    <tbody class="divide-y">
+                        <tr class="hover:bg-surface-container/30 transition-colors cursor-pointer" onclick="viewOfferDetails('OFF-001', 'Ingeniero de Sistemas Senior', 'Scotiabank', 'Ingeniería de Sistemas', 96, 247, ['Python', 'SQL', 'Cloud', 'Arquitectura'])">
+                            <td class="p-4 font-bold text-primary">OFF-001</td>
+                            <td><div class="font-medium">Ingeniero de Sistemas Senior</div><div class="text-xs text-secondary">Scotiabank</div></td>
+                            <td class="text-secondary">Ing. Sistemas</td>
+                            <td><div class="flex items-center gap-2"><div class="w-16 bg-surface-variant rounded-full h-1.5"><div class="bg-success h-full rounded-full" style="width:96%"></div></div>96%</div></td>
+                            <td class="font-semibold">247</td>
+                            <td><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">Pendiente</span></td>
+                            <td><button class="text-primary"><span class="material-symbols-outlined">visibility</span></button></td>
+                        </tr>
+                        <tr class="hover:bg-surface-container/30 transition-colors cursor-pointer" onclick="viewOfferDetails('OFF-002', 'Practicante Marketing Digital', 'Belcorp', 'Administración de Marketing', 91, 89, ['SEO', 'Redes Sociales', 'Analítica'])">
+                            <td class="p-4 font-bold text-primary">OFF-002</td>
+                            <td><div class="font-medium">Practicante Marketing Digital</div><div class="text-xs text-secondary">Belcorp</div></td>
+                            <td class="text-secondary">Marketing</td>
+                            <td><div class="flex items-center gap-2"><div class="w-16 bg-surface-variant rounded-full h-1.5"><div class="bg-success h-full rounded-full" style="width:91%"></div></div>91%</div></td>
+                            <td class="font-semibold">89</td>
+                            <td><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">Pendiente</span></td>
+                            <td><button class="text-primary"><span class="material-symbols-outlined">visibility</span></button></td>
+                        </tr>
+                        <tr class="hover:bg-surface-container/30 transition-colors cursor-pointer" onclick="viewOfferDetails('OFF-004', 'Ingeniero de Datos', 'Ripley Perú', 'Ciencia de Datos', 94, 186, ['Python', 'Spark', 'ETL', 'SQL'])">
+                            <td class="p-4 font-bold text-primary">OFF-004</td>
+                            <td><div class="font-medium">Ingeniero de Datos</div><div class="text-xs text-secondary">Ripley</div></td>
+                            <td class="text-secondary">Ciencia de Datos</td>
+                            <td><div class="flex items-center gap-2"><div class="w-16 bg-surface-variant rounded-full h-1.5"><div class="bg-success h-full rounded-full" style="width:94%"></div></div>94%</div></td>
+                            <td class="font-semibold">186</td>
+                            <td><span class="bg-green-100 text-success px-2 py-1 rounded-full text-xs">Enviado</span></td>
+                            <td><button class="text-primary"><span class="material-symbols-outlined">visibility</span></button></td>
+                        </tr>
+                        <tr class="hover:bg-surface-container/30 transition-colors cursor-pointer" onclick="viewOfferDetails('OFF-005', 'Ingeniero Civil Senior', 'COSAPI', 'Ingeniería Civil', 89, 156, ['AutoCAD', 'Gestión de Proyectos', 'Estructuras'])">
+                            <td class="p-4 font-bold text-primary">OFF-005</td>
+                            <td><div class="font-medium">Ingeniero Civil Senior</div><div class="text-xs text-secondary">COSAPI</div></td>
+                            <td class="text-secondary">Ing. Civil</td>
+                            <td><div class="flex items-center gap-2"><div class="w-16 bg-surface-variant rounded-full h-1.5"><div class="bg-success h-full rounded-full" style="width:89%"></div></div>89%</div></td>
+                            <td class="font-semibold">156</td>
+                            <td><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">Pendiente</span></td>
+                            <td><button class="text-primary"><span class="material-symbols-outlined">visibility</span></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    let currentProcessedData = null;
+    let currentDetailData = null;
+    let selectedFiles = [];
+
+    function switchTab(tab) {
+        document.getElementById('panelText').classList.toggle('hidden', tab !== 'text');
+        document.getElementById('panelFile').classList.toggle('hidden', tab !== 'file');
+        document.getElementById('tabTextBtn').classList.toggle('border-b-2', tab === 'text');
+        document.getElementById('tabTextBtn').classList.toggle('border-success', tab === 'text');
+        document.getElementById('tabTextBtn').classList.toggle('text-success', tab === 'text');
+        document.getElementById('tabFileBtn').classList.toggle('border-b-2', tab === 'file');
+        document.getElementById('tabFileBtn').classList.toggle('border-success', tab === 'file');
+        document.getElementById('tabFileBtn').classList.toggle('text-success', tab === 'file');
+        document.getElementById('tabFileBtn').classList.toggle('text-secondary', tab !== 'file');
+    }
+
+    document.getElementById('fileInput').addEventListener('change', (e) => {
+        selectedFiles = Array.from(e.target.files);
+        const fileListDiv = document.getElementById('fileList');
+        fileListDiv.innerHTML = selectedFiles.map(f => `<div class="bg-surface-container p-2 rounded-lg flex justify-between items-center"><span class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">description</span> ${f.name}</span><span class="text-success text-sm">${(f.size/1024).toFixed(1)} KB</span></div>`).join('');
+    });
+
+    function startProcessing() {
+        const textArea = document.getElementById('offerText');
+        let hasContent = false;
+        
+        if (!document.getElementById('panelText').classList.contains('hidden') && textArea.value.trim()) {
+            hasContent = true;
+        } else if (!document.getElementById('panelFile').classList.contains('hidden') && selectedFiles.length > 0) {
+            hasContent = true;
+            textArea.value = `Archivo: ${selectedFiles[0].name}\nContenido simulado para procesamiento...\nSe requiere un Ingeniero de Sistemas con experiencia en Python y AWS.`;
+        }
+        
+        if (!hasContent) {
+            alert('Por favor, ingresa texto o selecciona un archivo');
+            return;
+        }
+
+        const modal = document.getElementById('processingModal');
+        const resultDiv = document.getElementById('processingResult');
+        modal.classList.remove('hidden');
+        resultDiv.classList.add('hidden');
+        
+        const steps = ['step1', 'step2', 'step3', 'step4'];
+        steps.forEach(step => {
+            const icon = document.getElementById(`${step}Icon`);
+            const status = document.getElementById(`${step}Status`);
+            icon.className = 'absolute -left-8 w-5 h-5 rounded-full bg-surface-variant border-2 border-outline flex items-center justify-center text-xs';
+            icon.innerText = step.slice(-1);
+            status.innerText = 'Esperando...';
+        });
+        document.getElementById('timelineLine').className = 'absolute left-[11px] top-2 bottom-2 w-[2px] bg-outline-variant';
+
+        const stepsData = [
+            { id: 'step1', text: 'Validando formato y limpieza de texto...', time: 800, icon: 'check_circle', status: 'Texto validado correctamente' },
+            { id: 'step2', text: 'Extrayendo keywords con KeyBERT...', time: 1200, icon: 'key', status: 'Palabras clave: Python, SQL, Cloud, Arquitectura' },
+            { id: 'step3', text: 'Clasificando por carrera (ML)...', time: 1000, icon: 'school', status: 'Carrera detectada: Ingeniería de Sistemas (96% confianza)' },
+            { id: 'step4', text: 'Buscando egresados compatibles...', time: 900, icon: 'group', status: 'Se encontraron 247 egresados compatibles' }
+        ];
+
+        let currentStep = 0;
+        
+        function processStep() {
+            if (currentStep >= stepsData.length) {
+                document.getElementById('timelineLine').className = 'absolute left-[11px] top-2 bottom-2 w-[2px] bg-success';
+                resultDiv.classList.remove('hidden');
+                document.getElementById('resultMatchCount').innerText = '247';
+                document.getElementById('resultDetails').innerHTML = 'Carrera: Ingeniería de Sistemas<br>Palabras clave: Python, SQL, Cloud, Arquitectura<br>Confianza: 96%';
+                currentProcessedData = { id: 'NEW-001', title: 'Oferta procesada', company: 'Empresa', careers: [{name: 'Ingeniería de Sistemas', confidence: 96, matchCount: 247}, {name: 'Ciencia de Datos', confidence: 78, matchCount: 124}, {name: 'Ingeniería de Software', confidence: 72, matchCount: 98}], matchCount: 247, tags: ['Python', 'SQL', 'Cloud', 'Arquitectura'], text: document.getElementById('offerText').value };
+                return;
+            }
+            
+            const step = stepsData[currentStep];
+            const iconEl = document.getElementById(`${step.id}Icon`);
+            const statusEl = document.getElementById(`${step.id}Status`);
+            
+            iconEl.className = 'absolute -left-8 w-5 h-5 rounded-full bg-success text-white flex items-center justify-center text-xs animate-pulse-glow';
+            iconEl.innerHTML = '<span class="material-symbols-outlined text-xs">hourglass_top</span>';
+            statusEl.innerText = step.text;
+            
+            setTimeout(() => {
+                iconEl.className = 'absolute -left-8 w-5 h-5 rounded-full bg-success text-white flex items-center justify-center text-xs';
+                iconEl.innerHTML = `<span class="material-symbols-outlined text-xs">${step.icon}</span>`;
+                statusEl.innerText = step.status;
+                currentStep++;
+                processStep();
+            }, step.time);
+        }
+        
+        processStep();
+    }
+
+    function closeProcessingModal() {
+        document.getElementById('processingModal').classList.add('hidden');
+    }
+
+    function showOfferDetailModal() {
+        if (!currentProcessedData) return;
+        openOfferDetailModal(currentProcessedData);
+    }
+
+    function openOfferDetailModal(data) {
+        currentDetailData = data;
+        document.getElementById('detailId').innerText = data.id || 'NEW-001';
+        document.getElementById('detailOriginalText').innerText = data.text || 'Texto de la oferta procesada...';
+        document.getElementById('detailConfidence').innerText = `${data.confidence || 96}% confianza`;
+        document.getElementById('detailMatchCount').innerText = data.matchCount;
+        
+        // Múltiples carreras
+        const careersContainer = document.getElementById('detailCareers');
+        const careers = data.careers || [{name: data.career || 'Ingeniería de Sistemas', confidence: data.confidence || 96, matchCount: data.matchCount}];
+        careersContainer.innerHTML = careers.map(c => `
+            <div class="flex items-center justify-between p-2 bg-surface-container rounded-lg">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-sm">school</span>
+                    <span class="font-medium text-primary">${c.name}</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-20 bg-surface-variant rounded-full h-1.5"><div class="bg-success h-full rounded-full" style="width:${c.confidence}%"></div></div>
+                    <span class="text-sm font-bold text-success">${c.confidence}%</span>
+                    <span class="text-xs text-secondary">${c.matchCount} egresados</span>
+                </div>
+            </div>
+        `).join('');
+        
+        const tagsContainer = document.getElementById('detailTags');
+        tagsContainer.innerHTML = (data.tags || ['Python', 'SQL']).map(tag => `<span class="bg-primary text-white px-3 py-1.5 rounded-full text-sm flex items-center gap-1"><span class="material-symbols-outlined text-sm">sell</span>${tag}</span>`).join('');
+        
+        const candidatesContainer = document.getElementById('detailCandidates');
+        candidatesContainer.innerHTML = `
+            <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container transition-colors">
+                <div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-sm font-bold text-primary">MF</div>
+                <div><p class="text-sm font-semibold text-primary">María Fernández G.</p><p class="text-xs text-secondary">Ing. Sistemas - 98% Match</p></div>
+                <span class="material-symbols-outlined text-success text-sm ml-auto">verified</span>
+            </div>
+            <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container transition-colors">
+                <div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-sm font-bold text-primary">CL</div>
+                <div><p class="text-sm font-semibold text-primary">Carlos López M.</p><p class="text-xs text-secondary">Ing. Sistemas - 95% Match</p></div>
+            </div>
+            <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container transition-colors">
+                <div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-sm font-bold text-primary">AQ</div>
+                <div><p class="text-sm font-semibold text-primary">Andrea Quispe R.</p><p class="text-xs text-secondary">Ing. Sistemas - 92% Match</p></div>
+            </div>
+        `;
+        
+        document.getElementById('offerDetailModal').classList.remove('hidden');
+    }
+
+    function viewOfferDetails(id, title, company, career, confidence, matchCount, tags) {
+        currentDetailData = { id, title, company, career: career, confidence, matchCount, tags, text: `Oferta ${id}: ${title} de ${company}. Buscamos profesionales con experiencia en ${tags.join(', ')}.`, careers: [{name: career, confidence: confidence, matchCount: matchCount}, {name: career === 'Ingeniería de Sistemas' ? 'Ciencia de Datos' : 'Ingeniería de Sistemas', confidence: Math.floor(confidence * 0.85), matchCount: Math.floor(matchCount * 0.7)}] };
+        openOfferDetailModal(currentDetailData);
+    }
+
+    function closeOfferDetailModal() {
+        document.getElementById('offerDetailModal').classList.add('hidden');
+    }
+
+    function sendOffer() {
+        alert(`Oferta ${currentDetailData?.id || 'procesada'} enviada exitosamente a ${currentDetailData?.matchCount || 0} egresados.`);
+        closeOfferDetailModal();
+        closeProcessingModal();
+    }
+
+    window.switchTab = switchTab;
+    window.startProcessing = startProcessing;
+    window.closeProcessingModal = closeProcessingModal;
+    window.showOfferDetailModal = showOfferDetailModal;
+    window.closeOfferDetailModal = closeOfferDetailModal;
+    window.viewOfferDetails = viewOfferDetails;
+    window.sendOffer = sendOffer;
+</script>
+</body>
+</html>

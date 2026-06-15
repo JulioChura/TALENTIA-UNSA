@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TALENTIA UNSA - Reportes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .bg-primary { background-color: #001631; }
+        .bg-primary-container { background-color: #0f2b4d; }
+        .bg-secondary-container { background-color: #dce2f3; }
+        .bg-surface { background-color: #faf9fc; }
+        .bg-surface-container-lowest { background-color: #ffffff; }
+        .bg-surface-container { background-color: #efedf1; }
+        .bg-success { background-color: #2D6A4F; }
+        .bg-tertiary-container { background-color: #432300; }
+        .text-primary { color: #001631; }
+        .text-on-primary { color: #ffffff; }
+        .text-secondary { color: #585f6c; }
+        .text-success { color: #2D6A4F; }
+        .border-outline-variant { border-color: #c4c6cf; }
+        .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-surface">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 h-20 bg-primary-container shadow-md z-50 flex justify-between items-center px-8">
+    <div class="flex items-center gap-3">
+        <span class="text-2xl font-bold text-on-primary">TALENTIA UNSA</span>
+        <div class="flex items-center gap-1 bg-success/20 border border-success px-3 py-1 rounded-full">
+            <span class="w-2 h-2 bg-success rounded-full animate-pulse"></span>
+            <span class="text-xs font-bold text-success">ML Active</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-success flex items-center justify-center text-white font-bold border-2 border-white">JC</div>
+    </div>
+</header>
+
+<div class="flex pt-20 min-h-screen">
+    <!-- Sidebar -->
+    <nav class="fixed left-0 top-20 bottom-0 w-[280px] bg-surface-container-lowest border-r border-outline-variant p-4 flex flex-col z-40 hidden md:flex">
+        <div class="flex items-center gap-3 mb-6 p-2">
+            <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-white font-bold text-lg">JC</div>
+            <div><h3 class="font-bold text-primary">Julio Chura</h3><span class="text-xs text-secondary">Administrador</span></div>
+        </div>
+        <div class="flex-1 space-y-1">
+            <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">dashboard</span> Dashboard</a>
+            <a href="ofertas.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">work</span> Ofertas</a>
+            <a href="egresados.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">school</span> Egresados</a>
+            <a href="reportes.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-secondary-container text-primary font-medium transition-all"><span class="material-symbols-outlined">analytics</span> Reportes</a>
+            <a href="configuracion.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">settings</span> Configuración</a>
+        </div>
+        <div class="pt-4 border-t border-outline-variant mt-auto space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">help</span> Ayuda</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">logout</span> Salir</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 md:ml-[280px] p-8">
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <h1 class="text-4xl font-bold text-primary">Reportes y Estadísticas</h1>
+                <p class="text-secondary mt-1">Análisis de desempeño y métricas clave del sistema</p>
+            </div>
+            <button class="flex items-center gap-2 border border-primary text-primary px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/10 transition">
+                <span class="material-symbols-outlined text-sm">download</span> Exportar
+            </button>
+        </div>
+
+        <!-- Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-surface-container-lowest p-6 rounded-xl card-shadow border border-outline-variant/30">
+                <div class="text-3xl font-bold text-primary">156</div>
+                <div class="text-secondary text-sm">Total Ofertas</div>
+                <div class="text-xs text-success mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-sm">trending_up</span> +12% vs anterior</div>
+            </div>
+            <div class="bg-surface-container-lowest p-6 rounded-xl card-shadow border border-outline-variant/30">
+                <div class="text-3xl font-bold text-primary">94.2%</div>
+                <div class="text-secondary text-sm">Precisión IA Global</div>
+                <div class="mt-2"><div class="w-full bg-surface-variant rounded-full h-1.5"><div class="bg-success h-full rounded-full" style="width:94%"></div></div></div>
+            </div>
+            <div class="bg-surface-container-lowest p-6 rounded-xl card-shadow border border-outline-variant/30">
+                <div class="text-3xl font-bold text-primary">412</div>
+                <div class="text-secondary text-sm">Colocaciones</div>
+                <div class="text-xs text-success mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-sm">check_circle</span> egresados colocados</div>
+            </div>
+            <div class="bg-surface-container-lowest p-6 rounded-xl card-shadow border border-outline-variant/30">
+                <div class="text-3xl font-bold text-primary">22%</div>
+                <div class="text-secondary text-sm">Tasa de Conversión</div>
+                <div class="text-xs text-secondary mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-sm">info</span> Oferta → Colocación</div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-surface-container-lowest rounded-xl card-shadow border border-outline-variant/30 p-6">
+                <h3 class="text-xl font-bold text-primary mb-4">Ofertas por Carrera</h3>
+                <div class="h-64 flex items-end justify-around gap-4">
+                    <div class="flex-1 text-center"><div class="bg-primary rounded-t-lg" style="height:120px"></div><span class="text-sm text-secondary mt-2 block">Sistemas</span><span class="text-xs font-bold text-primary">120</span></div>
+                    <div class="flex-1 text-center"><div class="bg-primary rounded-t-lg" style="height:85px"></div><span class="text-sm text-secondary mt-2 block">Industrial</span><span class="text-xs font-bold text-primary">85</span></div>
+                    <div class="flex-1 text-center"><div class="bg-primary rounded-t-lg" style="height:45px"></div><span class="text-sm text-secondary mt-2 block">Marketing</span><span class="text-xs font-bold text-primary">45</span></div>
+                    <div class="flex-1 text-center"><div class="bg-primary rounded-t-lg" style="height:95px"></div><span class="text-sm text-secondary mt-2 block">Civil</span><span class="text-xs font-bold text-primary">95</span></div>
+                    <div class="flex-1 text-center"><div class="bg-primary rounded-t-lg" style="height:140px"></div><span class="text-sm text-secondary mt-2 block">CS</span><span class="text-xs font-bold text-primary">140</span></div>
+                </div>
+            </div>
+            <div class="bg-surface-container-lowest rounded-xl card-shadow border border-outline-variant/30 p-6">
+                <h3 class="text-xl font-bold text-primary mb-4">Estado de Ofertas</h3>
+                <div class="flex flex-col items-center">
+                    <div class="relative w-48 h-48 rounded-full" style="background: conic-gradient(#0F2B4D 0% 60%, #475f84 60% 85%, #dce2f3 85% 100%);">
+                        <div class="absolute inset-4 bg-white rounded-full flex items-center justify-center">
+                            <div class="text-center"><span class="text-2xl font-bold text-primary">156</span><br><span class="text-xs text-secondary">Total</span></div>
+                        </div>
+                    </div>
+                    <div class="mt-6 w-full space-y-2">
+                        <div class="flex justify-between"><span class="text-secondary">Enviadas</span><span class="font-bold text-primary">60%</span></div>
+                        <div class="flex justify-between"><span class="text-secondary">Pendientes</span><span class="font-bold text-primary">25%</span></div>
+                        <div class="flex justify-between"><span class="text-secondary">Descartadas</span><span class="font-bold text-primary">15%</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Companies Table -->
+        <div class="bg-surface-container-lowest rounded-xl card-shadow border border-outline-variant/30 overflow-hidden">
+            <div class="p-6 border-b border-outline-variant">
+                <h3 class="text-xl font-bold text-primary">Top Empresas Demandantes</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-surface-container text-secondary text-xs uppercase"><tr><th class="p-4">Empresa</th><th class="p-4">Sector</th><th class="p-4">N° Ofertas</th><th class="p-4">Match Score</th><th class="p-4">Tendencia</th></tr></thead>
+                    <tbody class="divide-y">
+                        <tr><td class="p-4 font-medium">Banco de Crédito</td><td class="text-secondary">Finanzas & Tech</td><td class="font-bold text-primary">45</td><td><div class="flex items-center gap-2"><div class="w-20 bg-surface-variant rounded-full h-1.5"><div class="bg-success h-full rounded-full" style="width:96%"></div></div><span class="text-sm font-bold text-success">96%</span></div></td><td><span class="text-success text-sm">Estable</span></td></tr>
+                        <tr><td class="p-4 font-medium">Alicorp</td><td class="text-secondary">Consumo Masivo</td><td class="font-bold text-primary">32</td><td><div class="flex items-center gap-2"><div class="w-20 bg-surface-variant rounded-full h-1.5"><div class="bg-success h-full rounded-full" style="width:88%"></div></div><span class="text-sm font-bold text-success">88%</span></div></td><td><span class="text-primary text-sm">Creciendo</span></td></tr>
+                        <tr><td class="p-4 font-medium">Sociedad Minera Cerro Verde</td><td class="text-secondary">Minería</td><td class="font-bold text-primary">28</td><td><div class="flex items-center gap-2"><div class="w-20 bg-surface-variant rounded-full h-1.5"><div class="bg-success h-full rounded-full" style="width:92%"></div></div><span class="text-sm font-bold text-success">92%</span></div></td><td><span class="text-success text-sm">Estable</span></td></tr>
+                        <tr><td class="p-4 font-medium">Interbank</td><td class="text-secondary">Banca</td><td class="font-bold text-primary">24</td><td><div class="flex items-center gap-2"><div class="w-20 bg-surface-variant rounded-full h-1.5"><div class="bg-success h-full rounded-full" style="width:94%"></div></div><span class="text-sm font-bold text-success">94%</span></div></td><td><span class="text-primary text-sm">Creciendo</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

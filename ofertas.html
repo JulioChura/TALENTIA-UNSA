@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TALENTIA UNSA - Ofertas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .bg-primary { background-color: #001631; }
+        .bg-primary-container { background-color: #0f2b4d; }
+        .bg-secondary-container { background-color: #dce2f3; }
+        .bg-surface { background-color: #faf9fc; }
+        .bg-surface-container-lowest { background-color: #ffffff; }
+        .bg-surface-container { background-color: #efedf1; }
+        .bg-success { background-color: #2D6A4F; }
+        .text-primary { color: #001631; }
+        .text-on-primary { color: #ffffff; }
+        .text-secondary { color: #585f6c; }
+        .text-success { color: #2D6A4F; }
+        .border-outline-variant { border-color: #c4c6cf; }
+        .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
+        .modal-backdrop { background-color: rgba(15, 43, 77, 0.4); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-surface">
+
+<header class="fixed top-0 left-0 right-0 h-20 bg-primary-container shadow-md z-50 flex justify-between items-center px-8">
+    <div class="flex items-center gap-3"><span class="text-2xl font-bold text-on-primary">TALENTIA UNSA</span><div class="flex items-center gap-1 bg-success/20 border border-success px-3 py-1 rounded-full"><span class="w-2 h-2 bg-success rounded-full animate-pulse"></span><span class="text-xs font-bold text-success">ML Active</span></div></div>
+    <div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full bg-success flex items-center justify-center text-white font-bold border-2 border-white">JC</div></div>
+</header>
+
+<div class="flex pt-20 min-h-screen">
+    <nav class="fixed left-0 top-20 bottom-0 w-[280px] bg-surface-container-lowest border-r border-outline-variant p-4 flex flex-col z-40 hidden md:flex">
+        <div class="flex items-center gap-3 mb-6 p-2"><div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-white font-bold text-lg">JC</div><div><h3 class="font-bold text-primary">Julio Chura</h3><span class="text-xs text-secondary">Administrador</span></div></div>
+        <div class="flex-1 space-y-1">
+            <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container"><span class="material-symbols-outlined">dashboard</span> Dashboard</a>
+            <a href="ofertas.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-secondary-container text-primary font-medium"><span class="material-symbols-outlined">work</span> Ofertas</a>
+            <a href="egresados.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container"><span class="material-symbols-outlined">school</span> Egresados</a>
+            <a href="reportes.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container"><span class="material-symbols-outlined">analytics</span> Reportes</a>
+            <a href="configuracion.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container"><span class="material-symbols-outlined">settings</span> Configuración</a>
+        </div>
+        <div class="pt-4 border-t border-outline-variant mt-auto space-y-1"><a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container"><span class="material-symbols-outlined">help</span> Ayuda</a><a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container"><span class="material-symbols-outlined">logout</span> Salir</a></div>
+    </nav>
+
+    <main class="flex-1 md:ml-[280px] p-8">
+        <h1 class="text-4xl font-bold text-primary mb-2">Gestión de Ofertas</h1>
+        <p class="text-secondary mb-8">Administra y gestiona todas las ofertas laborales procesadas por la IA</p>
+
+        <div class="bg-surface-container-lowest rounded-xl card-shadow overflow-hidden">
+            <div class="p-6 border-b flex justify-between items-center"><h2 class="text-xl font-bold text-primary">Todas las ofertas</h2><button class="bg-primary text-white px-4 py-2 rounded-lg text-sm">+ Nueva oferta</button></div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-surface-container text-secondary text-xs uppercase"><tr><th class="p-4">ID</th><th>Título / Empresa</th><th>Carrera</th><th>Match IA</th><th>Egresados</th><th>Estado</th><th></th></tr></thead>
+                    <tbody class="divide-y">
+                        <tr><td class="p-4 font-bold text-primary">OFF-001</td><td><div class="font-medium">Ingeniero de Sistemas Senior</div><div class="text-xs text-secondary">Scotiabank</div></td><td class="text-secondary">Ing. Sistemas</td><td><span class="text-success font-bold">96%</span></td><td class="font-semibold">247</td><td><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">Pendiente</span></td><td><button onclick="showDetailsAndSend('OFF-001', 'Ingeniero de Sistemas Senior', 'Scotiabank', 247)" class="text-success"><span class="material-symbols-outlined">send</span></button><button onclick="viewOfferDetails('OFF-001', 'Ingeniero de Sistemas Senior', 'Scotiabank', 'Ingeniería de Sistemas', 96, 247, ['Python','SQL','Cloud'])" class="text-primary ml-2"><span class="material-symbols-outlined">visibility</span></button></td></tr>
+                        <tr><td class="p-4 font-bold text-primary">OFF-002</td><td><div class="font-medium">Practicante Marketing Digital</div><div class="text-xs text-secondary">Belcorp</div></td><td class="text-secondary">Marketing</td><td><span class="text-success font-bold">91%</span></td><td class="font-semibold">89</td><td><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">Pendiente</span></td><td><button onclick="showDetailsAndSend('OFF-002', 'Practicante Marketing Digital', 'Belcorp', 89)" class="text-success"><span class="material-symbols-outlined">send</span></button><button onclick="viewOfferDetails('OFF-002', 'Practicante Marketing Digital', 'Belcorp', 'Marketing', 91, 89, ['SEO','Redes Sociales'])" class="text-primary ml-2"><span class="material-symbols-outlined">visibility</span></button></td></tr>
+                        <tr><td class="p-4 font-bold text-primary">OFF-004</td><td><div class="font-medium">Ingeniero de Datos</div><div class="text-xs text-secondary">Ripley</div></td><td class="text-secondary">Ing. Sistemas</td><td><span class="text-success font-bold">94%</span></td><td class="font-semibold">186</td><td><span class="bg-green-100 text-success px-2 py-1 rounded-full text-xs">Enviado</span></td><td><button class="text-primary"><span class="material-symbols-outlined">visibility</span></button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Modal de Confirmación de Envío -->
+<div id="confirmModal" class="fixed inset-0 modal-backdrop z-50 flex items-center justify-center hidden">
+    <div class="bg-surface-container-lowest rounded-xl max-w-md w-full p-6 text-center">
+        <div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mx-auto mb-4"><span class="material-symbols-outlined text-primary text-3xl">mail</span></div>
+        <h3 class="text-xl font-bold text-primary mb-2">Confirmar envío</h3>
+        <p class="text-secondary mb-4">¿Estás seguro de enviar esta oferta a <strong id="modalCount" class="text-primary">0</strong> egresados?</p>
+        <div class="flex gap-3"><button id="confirmSendBtn" class="flex-1 bg-success text-white py-2 rounded-lg font-semibold">Sí, enviar</button><button onclick="hideConfirmModal()" class="flex-1 border rounded-lg py-2 text-secondary">Cancelar</button></div>
+    </div>
+</div>
+
+<!-- Modal de Detalles de Oferta (mismo que en dashboard) -->
+<div id="offerDetailModal" class="fixed inset-0 modal-backdrop z-50 flex items-center justify-center hidden p-4">
+    <div class="bg-surface-container-lowest w-full max-w-5xl max-h-[90vh] rounded-xl shadow-2xl flex flex-col overflow-hidden">
+        <div class="flex justify-between items-center px-6 py-4 border-b"><h2 class="text-xl font-bold text-primary flex items-center gap-2"><span class="material-symbols-outlined">work</span> Detalles de la oferta</h2><button onclick="closeOfferDetailModal()" class="text-secondary hover:text-error"><span class="material-symbols-outlined">close</span></button></div>
+        <div class="flex-1 overflow-y-auto p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-8 flex flex-col gap-6">
+                <div class="flex flex-wrap gap-4"><span class="bg-surface-variant px-3 py-1 rounded-md text-sm flex items-center gap-1"><span class="material-symbols-outlined text-sm">tag</span> <span id="detailId">OFF-001</span></span></div>
+                <div class="bg-surface p-5 rounded-xl border relative"><div class="absolute top-0 left-0 w-1 h-full bg-surface-tint"></div><h3 class="text-sm font-semibold text-secondary uppercase mb-2">Correo Original</h3><p class="text-on-surface" id="detailOriginalText"></p></div>
+                <div class="bg-primary-fixed-dim/10 p-5 rounded-xl border"><div class="flex justify-between mb-4"><h3 class="font-bold text-primary flex items-center gap-2"><span class="material-symbols-outlined">auto_awesome</span> Análisis IA</h3><span id="detailConfidence" class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-sm font-bold">96%</span></div><p class="mb-4"><span class="font-semibold">Carrera sugerida:</span> <span id="detailCareer"></span></p><div><span class="text-sm text-secondary">Etiquetas clave:</span><div id="detailTags" class="flex flex-wrap gap-2 mt-2"></div></div><div class="mt-4 pt-4 border-t flex justify-between"><span>Egresados compatibles:</span><span id="detailMatchCount" class="text-2xl font-bold text-primary"></span></div></div>
+            </div>
+            <div class="lg:col-span-4 flex flex-col gap-6">
+                <div class="bg-surface p-5 rounded-xl border"><h3 class="font-bold mb-4">Estado del Proceso</h3><div class="relative pl-6 space-y-6"><div class="absolute left-[11px] top-2 bottom-6 w-[2px] bg-outline-variant"></div><div class="relative"><div class="absolute -left-6 w-2.5 h-2.5 rounded-full bg-primary mt-1.5"></div><p class="text-xs text-secondary">10:23 AM</p><p class="font-medium">Recibido</p></div><div class="relative"><div class="absolute -left-6 w-2.5 h-2.5 rounded-full bg-primary mt-1.5"></div><p class="text-xs text-secondary">10:25 AM</p><p class="font-medium">Procesado por IA</p></div><div class="relative"><div class="absolute -left-6 w-2.5 h-2.5 rounded-full bg-surface-variant border-2 border-outline mt-1.5"></div><p class="text-xs text-secondary">Pendiente</p><p class="italic text-secondary">Envío a egresados</p></div></div></div>
+                <div class="bg-surface p-5 rounded-xl border"><div class="flex justify-between mb-4"><h3 class="font-bold">Top Candidatos</h3><span class="text-sm text-primary cursor-pointer">Ver todos</span></div><div id="detailCandidates" class="space-y-3"></div></div>
+            </div>
+        </div>
+        <div class="px-6 py-4 border-t bg-surface-container-low flex justify-end gap-4"><button onclick="closeOfferDetailModal()" class="px-6 py-2 rounded-full border">Cerrar</button><button onclick="sendFromDetail()" class="px-8 py-2 rounded-full bg-primary text-white font-bold flex items-center gap-2"><span class="material-symbols-outlined">send</span> Enviar a egresados</button></div>
+    </div>
+</div>
+
+<script>
+    let currentOfferForSend = null;
+    let currentDetailData = null;
+
+    function showDetailsAndSend(offerId, title, company, count) { currentOfferForSend = { id: offerId, title, company, count }; document.getElementById('modalCount').innerText = count; document.getElementById('confirmModal').classList.remove('hidden'); }
+    function hideConfirmModal() { document.getElementById('confirmModal').classList.add('hidden'); }
+    document.getElementById('confirmSendBtn').onclick = () => { alert(`✅ Oferta ${currentOfferForSend?.id} enviada a ${currentOfferForSend?.count} egresados`); hideConfirmModal(); };
+
+    function viewOfferDetails(id, title, company, career, confidence, matchCount, tags) {
+        currentDetailData = { id, title, company, career, confidence, matchCount, tags };
+        document.getElementById('detailId').innerText = id;
+        document.getElementById('detailOriginalText').innerText = `Oferta ${id}: ${title} de ${company}. Buscamos profesionales con experiencia en ${tags.join(', ')}.`;
+        document.getElementById('detailConfidence').innerText = `${confidence}% confianza`;
+        document.getElementById('detailCareer').innerText = career;
+        document.getElementById('detailMatchCount').innerText = matchCount;
+        document.getElementById('detailTags').innerHTML = tags.map(t => `<span class="bg-primary text-white px-3 py-1.5 rounded-full text-sm">${t}</span>`).join('');
+        document.getElementById('detailCandidates').innerHTML = `
+            <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container"><div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-sm font-bold">MF</div><div><p class="text-sm font-semibold">María Fernández G.</p><p class="text-xs text-secondary">${career} - ${confidence}% Match</p></div></div>
+            <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container"><div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-sm font-bold">CL</div><div><p class="text-sm font-semibold">Carlos López M.</p><p class="text-xs text-secondary">${career} - ${confidence-1}% Match</p></div></div>
+            <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container"><div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-sm font-bold">AQ</div><div><p class="text-sm font-semibold">Andrea Quispe R.</p><p class="text-xs text-secondary">${career} - ${confidence-4}% Match</p></div></div>`;
+        document.getElementById('offerDetailModal').classList.remove('hidden');
+    }
+
+    function closeOfferDetailModal() { document.getElementById('offerDetailModal').classList.add('hidden'); }
+    function sendFromDetail() { alert(`✅ Oferta ${currentDetailData?.id} enviada a ${currentDetailData?.matchCount} egresados`); closeOfferDetailModal(); }
+
+    window.showDetailsAndSend = showDetailsAndSend; window.hideConfirmModal = hideConfirmModal;
+    window.viewOfferDetails = viewOfferDetails; window.closeOfferDetailModal = closeOfferDetailModal; window.sendFromDetail = sendFromDetail;
+</script>
+</body>
+</html>

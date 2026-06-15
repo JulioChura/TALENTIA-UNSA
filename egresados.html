@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TALENTIA UNSA - Egresados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .bg-primary { background-color: #001631; }
+        .bg-primary-container { background-color: #0f2b4d; }
+        .bg-secondary-container { background-color: #dce2f3; }
+        .bg-surface { background-color: #faf9fc; }
+        .bg-surface-container-lowest { background-color: #ffffff; }
+        .bg-surface-container { background-color: #efedf1; }
+        .bg-success { background-color: #2D6A4F; }
+        .bg-error { background-color: #ba1a1a; }
+        .text-primary { color: #001631; }
+        .text-on-primary { color: #ffffff; }
+        .text-secondary { color: #585f6c; }
+        .text-success { color: #2D6A4F; }
+        .text-error { color: #ba1a1a; }
+        .border-outline-variant { border-color: #c4c6cf; }
+        .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-surface">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 h-20 bg-primary-container shadow-md z-50 flex justify-between items-center px-8">
+    <div class="flex items-center gap-3">
+        <span class="text-2xl font-bold text-on-primary">TALENTIA UNSA</span>
+        <div class="flex items-center gap-1 bg-success/20 border border-success px-3 py-1 rounded-full">
+            <span class="w-2 h-2 bg-success rounded-full animate-pulse"></span>
+            <span class="text-xs font-bold text-success">ML Active</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-success flex items-center justify-center text-white font-bold border-2 border-white">JC</div>
+    </div>
+</header>
+
+<div class="flex pt-20 min-h-screen">
+    <!-- Sidebar -->
+    <nav class="fixed left-0 top-20 bottom-0 w-[280px] bg-surface-container-lowest border-r border-outline-variant p-4 flex flex-col z-40 hidden md:flex">
+        <div class="flex items-center gap-3 mb-6 p-2">
+            <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-white font-bold text-lg">JC</div>
+            <div><h3 class="font-bold text-primary">Julio Chura</h3><span class="text-xs text-secondary">Administrador</span></div>
+        </div>
+        <div class="flex-1 space-y-1">
+            <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">dashboard</span> Dashboard</a>
+            <a href="ofertas.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">work</span> Ofertas</a>
+            <a href="egresados.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-secondary-container text-primary font-medium transition-all"><span class="material-symbols-outlined">school</span> Egresados</a>
+            <a href="reportes.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">analytics</span> Reportes</a>
+            <a href="configuracion.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">settings</span> Configuración</a>
+        </div>
+        <div class="pt-4 border-t border-outline-variant mt-auto space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">help</span> Ayuda</a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-secondary hover:bg-surface-container transition-all"><span class="material-symbols-outlined">logout</span> Salir</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 md:ml-[280px] p-8">
+        <h1 class="text-4xl font-bold text-primary mb-2">Gestión de Egresados</h1>
+        <p class="text-secondary mb-8">Administra y valida los perfiles de los graduados para optimizar el match de IA</p>
+
+        <!-- Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-surface-container-lowest p-6 rounded-xl card-shadow border border-outline-variant/30">
+                <div class="text-4xl font-bold text-primary">3,247</div>
+                <div class="text-secondary mt-1">Total Egresados</div>
+                <div class="text-xs text-success mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-sm">trending_up</span> +2.4% este mes</div>
+            </div>
+            <div class="bg-surface-container-lowest p-6 rounded-xl card-shadow border border-outline-variant/30">
+                <div class="text-4xl font-bold text-primary">92%</div>
+                <div class="text-secondary mt-1">Perfiles Validados</div>
+                <div class="mt-3"><div class="w-full bg-surface-variant rounded-full h-1.5 overflow-hidden"><div class="bg-success h-full rounded-full" style="width:92%"></div></div></div>
+            </div>
+            <div class="bg-surface-container-lowest p-6 rounded-xl card-shadow border border-outline-variant/30">
+                <div class="text-4xl font-bold text-primary">+142</div>
+                <div class="text-secondary mt-1">Nuevos esta semana</div>
+                <div class="text-xs text-success mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-sm">group_add</span> Mayor afluencia registrada</div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="bg-surface-container-lowest rounded-xl card-shadow overflow-hidden">
+            <div class="p-6 border-b border-outline-variant flex flex-wrap gap-4 justify-between items-center">
+                <div class="flex gap-3 flex-1">
+                    <div class="relative flex-1 max-w-md">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-lg">search</span>
+                        <input type="text" placeholder="Buscar por nombre o DNI..." class="w-full pl-10 pr-4 py-2 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                    </div>
+                    <select class="border border-outline-variant rounded-lg px-4 py-2 text-secondary">
+                        <option>Todas las carreras</option>
+                        <option>Ing. Sistemas</option>
+                        <option>Administración</option>
+                        <option>Ing. Civil</option>
+                    </select>
+                    <select class="border border-outline-variant rounded-lg px-4 py-2 text-secondary">
+                        <option>Promoción</option>
+                        <option>2024</option>
+                        <option>2023</option>
+                    </select>
+                </div>
+                <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium">+ Registrar egresado</button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-surface-container text-secondary text-xs uppercase">
+                        <tr><th class="p-4">Egresado</th><th class="p-4">Carrera</th><th class="p-4">Promoción</th><th class="p-4">Estado</th><th class="p-4">Match Promedio</th><th class="p-4"></th></tr>
+                    </thead>
+                    <tbody class="divide-y divide-outline-variant/30">
+                        <tr class="hover:bg-surface-container/30"><td class="p-4"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center font-bold">MF</div><div><div class="font-medium">María Fernández G.</div><div class="text-xs text-secondary">DNI: 71234567</div></div></div></td><td>Ing. Sistemas</td><td>2024</td><td><span class="bg-green-100 text-success px-2 py-1 rounded-full text-xs">Validado</span></td><td><div class="flex items-center gap-2"><div class="w-16 bg-surface-variant rounded-full h-1.5"><div class="bg-success h-full rounded-full" style="width:98%"></div></div><span class="text-sm font-bold text-success">98%</span></div></td><td><button class="text-primary"><span class="material-symbols-outlined">visibility</span></button></td></tr>
+                        <tr class="hover:bg-surface-container/30"><td class="p-4"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center font-bold">CL</div><div><div class="font-medium">Carlos López M.</div><div class="text-xs text-secondary">DNI: 72345678</div></div></div></td><td>Ing. Sistemas</td><td>2023</td><td><span class="bg-green-100 text-success px-2 py-1 rounded-full text-xs">Validado</span></td><td><div class="flex items-center gap-2"><div class="w-16 bg-surface-variant rounded-full h-1.5"><div class="bg-success h-full rounded-full" style="width:95%"></div></div><span class="text-sm font-bold text-success">95%</span></div></td><td><button class="text-primary"><span class="material-symbols-outlined">visibility</span></button></td></tr>
+                        <tr class="hover:bg-surface-container/30"><td class="p-4"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center font-bold">AQ</div><div><div class="font-medium">Andrea Quispe R.</div><div class="text-xs text-secondary">DNI: 73456789</div></div></div></td><td>Ing. Sistemas</td><td>2024</td><td><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">Pendiente</span></td><td><div class="flex items-center gap-2"><div class="w-16 bg-surface-variant rounded-full h-1.5"><div class="bg-success h-full rounded-full" style="width:92%"></div></div><span class="text-sm font-bold text-success">92%</span></div></td><td><button class="text-primary"><span class="material-symbols-outlined">visibility</span></button></td></tr>
+                        <tr class="hover:bg-surface-container/30"><td class="p-4"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center font-bold">RD</div><div><div class="font-medium">Ricardo Díaz F.</div><div class="text-xs text-secondary">DNI: 74567890</div></div></div></td><td>Administración</td><td>2024</td><td><span class="bg-green-100 text-success px-2 py-1 rounded-full text-xs">Validado</span></td><td><div class="flex items-center gap-2"><div class="w-16 bg-surface-variant rounded-full h-1.5"><div class="bg-success h-full rounded-full" style="width:88%"></div></div><span class="text-sm font-bold text-success">88%</span></div></td><td><button class="text-primary"><span class="material-symbols-outlined">visibility</span></button></td></tr>
+                        <tr class="hover:bg-surface-container/30"><td class="p-4"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-error-container text-error flex items-center justify-center font-bold">PR</div><div><div class="font-medium">Patricia Rojas V.</div><div class="text-xs text-secondary">DNI: 75678901</div></div></div></td><td>Ing. Civil</td><td>2023</td><td><span class="bg-red-100 text-error px-2 py-1 rounded-full text-xs">Incompleto</span></td><td><div class="flex items-center gap-2"><div class="w-16 bg-surface-variant rounded-full h-1.5"><div class="bg-error h-full rounded-full" style="width:75%"></div></div><span class="text-sm font-bold text-error">75%</span></div></td><td><button class="text-primary"><span class="material-symbols-outlined">visibility</span></button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="p-4 border-t border-outline-variant flex justify-between items-center">
+                <span class="text-sm text-secondary">Mostrando 1-5 de 3,247 egresados</span>
+                <div class="flex gap-2"><button class="px-3 py-1 border rounded-lg text-secondary">Anterior</button><button class="px-3 py-1 bg-primary text-white rounded-lg">1</button><button class="px-3 py-1 border rounded-lg text-secondary">2</button><button class="px-3 py-1 border rounded-lg text-secondary">3</button><button class="px-3 py-1 border rounded-lg text-secondary">Siguiente</button></div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
